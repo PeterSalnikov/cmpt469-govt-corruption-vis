@@ -99,17 +99,3 @@ output = json.dumps(world) # New JSON string
 with open("sample.json", "w") as outfile:
     outfile.write(output)
 
-
-    # found = list.find("aruba")
-    # print(found)
-
-    #     print("true")
-
-    # else:
-    #     iter += 1
-    #     # print("false")
-    #     # print(list[iter]["name"])
-
-    # if iter == 180:
-    #     break
-    # print(properties["name"])

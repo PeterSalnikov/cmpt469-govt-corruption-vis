@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,53 +8,156 @@
         font-family: "Helvetica Neue"; }
         p {
         font-size: 0.85em; }
-        svg {
-        width: 99%;
-        border-radius: 15px;
-        position: absolute;
-        /* padding: 10px; */
-        background: skyblue;
-        top: 1%;
-        /* left: 5%; */
+        .body{
+          overflow: auto;
         }
+        #label {
+            font-size: 2em;
+            z-index: 10;
+            top:670px;
+            left: 1%;
+            color: white;
+            position: absolute;
+            text-align: left;
+            /* text-shadow: 1px 1px #ffffff; */
+        }
+        #param {
+          font-size:3em;
+          top:650px;
+          right: 1%;
+          color: white;
+          position: absolute;
+          text-align: right;
+          z-index: 10;
+        }
+        #map {
+          width: 99%;
+          border-radius: 1px;
+          /* border-style: groove hidden ridge; */
+          /* z-index: -1; */
+          position:absolute;
+          /* padding: 10px; */
+          /* background: skyblue; */
+          /* stroke: black; */
+          /* stroke-width: 5px; */
+          /* stroke-linecap: round; */
+          top: 1%;
+          background-color: #AFDBF5;
+          z-index: 3;
+          border-radius: 10px;
+          /* left: 5%; */
+        }
+
+        #radar {
+          /* background-color: grey; */
+          position: absolute;
+          /* width: 600px;
+          height: 700px; */
+          /* left: 200px; */
+          top: 2%;
+          right: 1%;
+          /* background-color: grey; */
+          z-index:10;
+
+        }
+
+        /* #map{
+        background-color: #AFDBF5;
+
+        } */
 
         /* .country {
             fill: #cccccc;
         }  */
-        path {
+       /* path {
             stroke: black;
             stroke-width: 0.1px;
 
-        }/*
+        }*/
         .selected {
             fill: purple;
-        } */
+        } 
         /* #play, #clock {
       	/* position: absolute; 
       	top: 5px;
       } */
       #play {
         position: absolute;
-      	top: 20px;
-        font-size: 2em;
-        top: 710px;
-        right: 1%;
+        margin: auto;
         width: 10%;
-        height: 7%;
-        border-radius: 15px;
+        height: 8%;
+        /* padding: 5px; */
+      	top: 30px;
+        font-size: 2.5em;
+        top: 720px;
+        left: 37.75%;
+        border: none;
+        /* border: 3px solid steelblue; */
+        border-radius: 5px;
+        background-color: steelblue;
+        color: white;
+        /* font-size: 3em; */
       }
+
+      #play:hover {
+        background-color: grey;
+      }
+
       #clock {
         position: absolute;
         margin: auto;
-        /* text-align: center; */
-        width: 90%;
-        left: 1%;
-        top: 700px;
-        padding: 10px;
-        /* border: 3px solid grey; */
+        text-align: center;
+        width: 36%;
+        height: 8%;
+        left: 0.5%;
+        top: 720px;
+        /* padding: 2px; */
+        /* border: 3px solid steelblue; */
         stroke: grey;
-        font-size: 3em;
+        background-color: steelblue;
+        font-size: 2.8em;
+        color: white;
+        border-radius: 5px;
+        
       }
+
+      .btn-group button {
+        position: relative;
+        border-style: none;
+
+        width: 17%;
+        height: 35px;
+        top: 712px; 
+        /*originally 712*/
+        left: 48.5%;
+        /* padding: 8.5px 24px; */
+        float: inline-block;
+        color: white;
+        font-size: 0.83em;
+        background-color: #0066b2;
+        border: 1px solid white;
+        border-radius: 5px;
+
+      }
+
+      /* #vae { background-color: #0066b2;}
+      #pve { background-color: #0039a6;}
+      #gee { background-color: #3457D5;} */
+
+      .btn-group button:hover {
+        background-color: grey;
+      }
+
+      #time-slider {
+        position: absolute;
+        top: 800px;
+        width: 36%;
+        left: 0.5%;
+        fill: steelblue;
+        height: 15px;
+  border-radius: 5px;
+      }
+
         </style>
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,10 +169,37 @@
         <link rel="stylesheet" href="">
     </head>
     <body onload="main()">
-        <!-- <div id="map"></div> -->
-        <svg id="map"></svg>
-        <button id="play">play</button>
-        <span id="clock">Global Corruption: Year</span>
+
+        <!-- <svg id="map"></svg> -->
+
+        <div id="label"></div>
+
+        <div id="btn-group" class="btn-group">
+          <div id="top-row">
+          <button id="vae">Voice & Accountability (vae)</button>
+          <button id="pve">Political Stability (pve)</button>
+          <button id="gee">Government Effectiveness (gee)</button>
+          </div>
+          <div id="bot-row">
+            <button id="rqe">Regulatory Quality (rqe)</button>
+            <button id="rle">Rule of Law (rle)</button>
+            <button id="cce">Corruption Control (cce)</button>
+          </div>
+        </div>
+
+        <label id="time-slider">
+          <!-- <span id="year">1998<br></span> -->
+          <input style="width:98%"type="range" min="1998" max="2020" id="size" value="1998" step='2'>
+          <br>Year
+        </label>
+
+        <!-- <svg id="radar"></svg> -->
+
+
+        <button id="play">Play</button>
+        <span id="clock">Global Corruption: 1998</span>
+        <span id="param">Voice & Accountability</span>
+
         <script src="http://d3js.org/topojson.v1.min.js"></script>
         <script type="text/javascript" src="main.js"></script>
     </body>
