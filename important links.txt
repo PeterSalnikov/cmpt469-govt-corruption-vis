@@ -3,3 +3,10 @@ https://github.com/SimmonsRitchie/topojoin
 
 d3 topojson tutorial
 https://www.youtube.com/watch?v=aNbgrqRuoiE
+
+choropleth animation
+http://bl.ocks.org/rgdonohue/9280446
+
+spider chart tutorial
+https://yangdanny97.github.io/blog/2019/03/01/D3-Spider-Chart
+
