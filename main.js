@@ -7,24 +7,15 @@ function main()
         height = 700,
         width = 1250 - margin.left - margin.right;
 
-        // var svg = d3.select("#map")
-        // var svg = d3.select("#map")
         var svg = d3.select("body").append("svg")
-        // .append("svg")
-        // .attr("height", height + margin.top + margin. bottom) 
         .attr("height", height)
         .attr("id","map")
-        // .attr("z-index",2)
         let curYear = 1998;
-        // .attr("width", width + margin. left + margin. right)
-        // let radar = d3.select("#radar")
 
         let radarOn = 0
 
         let curParam = "vae";
         let selected;
-        // .append("g")
-        // .attr("transform", "translate(" + margin. left + "," + margin.top + ")");
         var playing = false;
         var currentAttribute = 0;
         var attributeArray = [];
@@ -41,7 +32,6 @@ function main()
         .projection(projection)
 
     var color = d3.scaleThreshold()
-    // .domain(d3.range(-2.5, 2.5))
     .domain(d3.range(-5,5))
 
     .range(d3.schemeBlues[9])
@@ -116,20 +106,13 @@ function main()
             .text("Close")
             .attr("pointer-events","none")
 
-            // d3.selectAll("line").remove()
-            // d3.selectAll("text").remove()
-            // radar.selectAll("path").remove()
+
             function angleToCoordinate(angle, value){
                 let x = Math.cos(angle) * radialScale(value);
                 let y = Math.sin(angle) * radialScale(value);
                 return {"x": centerX + x, "y": centerY - y};
             }
             
-            // d3.select("#radar").attr("z-index","10")
-            // .classed("radar-clicked",true)
-            // .attr("width", 600)
-            // .attr("height", 300)
-        // .attr("y","750px")
         let radialScale = d3.scaleLinear()
         .domain([0,10])
         .range([0,250]);
@@ -398,7 +381,6 @@ data.then(function(data)
                 .duration(2000)
                 .attr("fill", function(d,j)
                 {
-                    // var vae = geometries[j].properties.years[attributeArray[currentAttribute]][curParam];
                     var vae = geometries[j].properties.years[attributeArray[currentAttribute]][curParam];
 
                     if(vae) 
@@ -419,6 +401,7 @@ data.then(function(data)
               playing = true;   // change the status of the animation
             } 
             
+            // Forgot what this is, has been like 2 years
             // else if (currentAttribute != 1998) //not really working rn
             // {
             //     clearInterval(timer);
@@ -444,13 +427,11 @@ data.then(function(data)
             
             d3.select('#clock').html("Global Corruption: "+curYear);  // update the clock
               
-            // svg.selectAll("path").each(function(d) { 
             svg.selectAll("path")
             .transition()
             .duration(200)
             .attr("fill", function(d,j)
             {
-                // var vae = geometries[j].properties.years[attributeArray[currentAttribute]][curParam];
                 var vae = geometries[j].properties.years[curYear][curParam];
 
                 if(vae) 
@@ -463,8 +444,6 @@ data.then(function(data)
             if(radarOn == 1)
                 radar(selected,curYear, svg)
 
-
-                // this.style.opacity = d.FIRE_SIZE > goal ? 1 : 0; 
               });
 
 
